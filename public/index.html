@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FloraVision - Next-Gen Plant Intelligence</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="animated-bg">
+      <div class="grid-overlay"></div>
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <span class="logo-text">FloraVision</span>
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#upload">Analyze</a>
+          <a href="#about">About</a>
+          <a href="#upload" class="nav-cta">Get Started</a>
+        </div>
+      </nav>
+
+      <section class="hero-section">
+        <div class="floating-badge">
+          <div class="badge-dot"></div>
+          <span>Powered by Advanced AI Technology</span>
+        </div>
+        <h1>
+          <span class="hero-title-line1">Revolutionary Plant</span>
+          <span class="hero-title-line2"
+            >Intelligence Platform <span class="sparkle"></span
+          ></span>
+        </h1>
+        <p class="hero-description">
+          Upload any plant photo and unlock instant species identification,
+          comprehensive health diagnostics, and personalized care
+          recommendations powered by cutting-edge machine learning.
+        </p>
+        <a href="#upload" class="hero-cta">
+          <i class="fas fa-rocket"></i>
+          Start Analyzing Now
+        </a>
+      </section>
+
+      <div class="stats-container">
+        <div class="stat-box">
+          <div class="stat-icon"><i class="fas fa-bullseye"></i></div>
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Accuracy Rate</span>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon"><i class="fas fa-database"></i></div>
+          <span class="stat-number">15K+</span>
+          <span class="stat-label">Plant Species</span>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+          <span class="stat-number">1.8s</span>
+          <span class="stat-label">Analysis Time</span>
+        </div>
+        <div class="stat-box">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <span class="stat-number">100K+</span>
+          <span class="stat-label">Happy Users</span>
+        </div>
+      </div>
+
+      <div class="main-section" id="upload">
+        <div class="upload-container">
+          <div class="section-label">
+            <i class="fas fa-upload"></i>
+            Upload Image
+          </div>
+          <h2 class="section-title">Analyze Your Plant</h2>
+
+          <form id="uploadForm" enctype="multipart/form-data">
+            <div class="upload-zone" id="dropArea">
+              <div class="upload-icon-container">
+                <i class="fas fa-cloud-arrow-up"></i>
+              </div>
+              <p class="upload-text-main">Drag & drop your plant image</p>
+              <p class="upload-text-sub">or click to browse from your device</p>
+              <div class="file-types">
+                <span class="file-type">JPG</span>
+                <span class="file-type">PNG</span>
+                <span class="file-type">WEBP</span>
+              </div>
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                required
+                id="imageInput"
+              />
+              <img id="imagePreview" alt="Preview" />
+            </div>
+            <button type="submit" class="analyze-button">
+              <span
+                ><i class="fas fa-wand-magic-sparkles"></i> Analyze with
+                AI</span
+              >
+            </button>
+          </form>
+        </div>
+
+        <div class="info-sidebar">
+          <div class="info-card">
+            <div class="info-card-header">
+              <div class="info-icon-box">
+                <i class="fas fa-brain"></i>
+              </div>
+              <h3>Neural Network Analysis</h3>
+            </div>
+            <p>
+              Our deep learning models process millions of botanical data
+              points, analyzing leaf morphology, venation patterns, color
+              gradients, and structural characteristics for unmatched precision.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-header">
+              <div class="info-icon-box">
+                <i class="fas fa-heart-pulse"></i>
+              </div>
+              <h3>Advanced Health Diagnostics</h3>
+            </div>
+            <p>
+              Detect diseases, pest damage, nutrient deficiencies, fungal
+              infections, and environmental stress. Receive step-by-step
+              treatment plans and preventive care strategies.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-card-header">
+              <div class="info-icon-box">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <h3>Tailored Care Instructions</h3>
+            </div>
+            <p>
+              Get precise watering schedules, optimal light conditions, soil pH
+              requirements, fertilization timing, pruning guidelines, and
+              seasonal care adjustments specific to your plant.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="loading">
+        <div class="loading-spinner">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+        </div>
+        <p class="loading-text-main">Analyzing your plant...</p>
+        <p class="loading-text-sub">Our AI is processing the image</p>
+        <div class="loading-progress">
+          <div class="loading-progress-bar"></div>
+        </div>
+      </div>
+
+      <div id="result"></div>
+
+      <button id="downloadButton">
+        <span
+          ><i class="fas fa-file-download"></i> Download Complete Analysis
+          Report</span
+        >
+      </button>
+
+      <section class="features-showcase" id="features">
+        <div class="showcase-header">
+          <div class="showcase-badge">
+            <i class="fas fa-star"></i>
+            Premium Features
+          </div>
+          <h2 class="showcase-title">Why Choose FloraVision?</h2>
+          <p class="showcase-subtitle">
+            The most advanced, accurate, and comprehensive plant analysis
+            platform available today
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-number">01</div>
+            <h4>Lightning Speed</h4>
+            <p>
+              Get comprehensive plant analysis in under 2 seconds with our
+              GPU-accelerated neural networks and optimized processing pipeline.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-number">02</div>
+            <h4>Vast Database</h4>
+            <p>
+              Access detailed information on over 15,000 plant species from
+              every continent, including rare and exotic varieties.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-number">03</div>
+            <h4>99.8% Accuracy</h4>
+            <p>
+              Industry-leading precision powered by state-of-the-art computer
+              vision and trained on millions of botanical images.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-number">04</div>
+            <h4>Beautiful Reports</h4>
+            <p>
+              Download professionally designed PDF reports with detailed
+              analysis, high-resolution images, and actionable recommendations.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-number">05</div>
+            <h4>Privacy First</h4>
+            <p>
+              Your images are processed securely with end-to-end encryption and
+              automatically deleted after analysis. Zero data retention.
+            </p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-number">06</div>
+            <h4>Universal Access</h4>
+            <p>
+              Fully responsive design works flawlessly on desktop, tablet, and
+              mobile devices. Analyze plants anywhere, anytime.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2>Ready to Transform Your Plant Care?</h2>
+          <p>
+            Join thousands of plant enthusiasts and professionals using
+            PlantScan AI to identify, diagnose, and care for their plants with
+            confidence.
+          </p>
+          <a href="#upload" class="cta-button">
+            <i class="fas fa-leaf"></i>
+            Get Started Free
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          &copy; 2025 FloraVision. All rights reserved. Made with
+          <i class="fas fa-heart"></i> for plant lovers.
+        </p>
+      </footer>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>

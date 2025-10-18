@@ -1,0 +1,3 @@
+npm i express dotenv multer pdfkit
+npm install @google/generative-ai
+node --watch filename
